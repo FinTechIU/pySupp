@@ -1,3 +1,3 @@
-import os, pwd
+import getpass
 
-print("Hello World, " + pwd.getpwuid(os.getuid())[0].title() + "!");
+print("Hello World, " + getpass.getuser() + "!");
