@@ -8,7 +8,7 @@ False, await, else, import, pass, None, break, except, in, raise, True, class, f
 
 Not demo'd yet:
 
-None, except, raise, class, finally, is, try, assert, del, yield
+yield
 
 '''
 
@@ -178,11 +178,76 @@ print('\nfrom:')
 from random import random as r
 print(r()) # Does the same thing as random.random(), but without having to use the full library and function name
 
+# assert is used for debugging / testing. If the assert clause does not evaluate to True, it will cause an error
+print('\nassert:')
+
+assert 1 == 1
+assert len('Hello') == 5
+#assert 2 > 10 # If you uncomment this line by removing the first #, it will cause an error
+
+# raise raises an exception
+# try, except, and finally are used to work with functions / code that can generate exceptions
+# we may cover exceptions in detail in the future, but there are many good online resources as well
+print('\ntry, except, finally, raise')
+
+try:
+	assert False
+	# You can also raise an exception yourself with a message
+	#raise Exception('This is the exception message')
+	
+	print('This will not be printed unless False is changed to True.')
+except Exception as e:
+	print('The try statement caught a ' + str(type(e)))
+finally:
+	print('The finally block is executed no matter what and will always be printed.')
+
+# del can remove an element from an array or delete the reference to a global variable
+print('\ndel:')
+
+l = [1, 2, 3]
+print('Before del l[1]:', l)
+del l[1] # Will delete 2, the 1st element of l (list indices start at 0 in Python)
+print('After del l[1]:', l)
+
+del l # This deletes any reference to l
+#print(l) # This would cause an error, since l no longer exists!
+
+# is checks if two objects have the same reference (does not check for equality)
+print('\nis:')
+
+print([1, 2, 3] == [1, 2, 3]) # Will print True since they are equal
+print([1, 2, 3] is [1, 2, 3]) # Will print False, because they are two instances of the same array
+
+# class allows you to create objects
+print('\nclass:')
+
+class Link: # This data structure is typically called a LinkedList
+	def __init__(self, value, next_link):
+		self.value = value
+		self.next_link = next_link
+
+b = Link('This is Link B', None)
+a = Link('This is Link A', b)
+
+print(a.value)
+print(a.next_link.value) # This will print 'This is Link B'
+
+# yield allows you to create your own generators. I have never used this personally but it's pretty cool.
+print('\nyield')
+
+def perfect_squares(n):
+	for i in range(1, n + 1):
+		yield i * i
+# Note: this can be done without the yield keyword, see the commented out example below	
+	
+print(list(perfect_squares(12))) # Prints '[1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144]'
+#print(list(i * i for i in range(1, 12+1))) # Prints the same thing
+
 # pass does nothing. It is useful because functions and if, elif, and else blocks need at least one line
 print('\npass:')
 
 def do_nothing():
-	pass # Pass stops the Python interpreter from throwing an error when a otherwise empty code block is created
+	pass # Pass stops the Python interpreter from throwing an error when a otherwise empty code block is found
 
 do_nothing()
 
@@ -196,6 +261,11 @@ You can try removing the pass from the above code, and see what happens.
 
 '''
 There a are few more keywords not documented above:
+
+None is a special value that variables can have. It usually represents the lack of a valid value.
+If you had a chain of objects, and each object has a 'next' field that gives the next link in the chain,
+the last object's 'next' field would probably be None to show there is no next object.
+(Don't worry if you didn't understand this very well).
 
 with is used to manage contexts and is commonly used when working with files
 We'll come back to this when we talk about file I/O.
