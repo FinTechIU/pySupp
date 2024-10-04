@@ -1,4 +1,4 @@
-## Fintech @ IU's Weekly Python Learning Sessions
+## Fall 2024 Learning Sessions
 
 ### Table of Contents 
 
