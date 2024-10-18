@@ -24,13 +24,13 @@ filled_list.insert(1, 23.5)
 filled_list.remove(1)
 #print(filled_list)
 
-#removes and rerturns an element from the beginning of the list
+#removes and returns an element from the beginning of the list
 #print(filled_list.pop())
 
 #Sorts the list
 nums_list = [5, 2, 1, 3]
 nums_list.sort()
-print(nums_list)
+#print(nums_list)
 
 #five_day_prices = [23.5, 25.6, 24.8, 24.9, 25]
 
