@@ -24,7 +24,7 @@ filled_list.insert(1, 23.5)
 filled_list.remove(1)
 #print(filled_list)
 
-#removes and rerturns an element from the beginning of the list
+#removes and returns an element from the beginning of the list
 #print(filled_list.pop())
 
 #Sorts the list
