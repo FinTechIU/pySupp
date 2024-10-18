@@ -30,7 +30,7 @@ filled_list.remove(1)
 #Sorts the list
 nums_list = [5, 2, 1, 3]
 nums_list.sort()
-print(nums_list)
+#print(nums_list)
 
 #five_day_prices = [23.5, 25.6, 24.8, 24.9, 25]
 
