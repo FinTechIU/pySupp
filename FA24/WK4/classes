@@ -1,0 +1,79 @@
+# Parent class Asset, not meant to be used itself
+class Asset:
+    total_assets = 0
+    
+    def __init__(self, name, value):
+        self.name = name
+        self.value = value
+        Asset.total_assets += 1
+
+    # Placeholder method that child classes should implement
+    def calculate_return(self):
+        pass
+
+    # Concrete method that can be used or overridden by child classes
+    def get_value(self):
+        return self.value
+
+    # Method that can be overridden in child classes
+    def asset_details(self):
+        return f"Asset Name: {self.name}, Value: {self.value}"
+
+# Child class Stock inheriting from Asset
+class Stock(Asset):
+    def __init__(self, name, value, dividend_yield):
+        super().__init__(name, value)
+        self.dividend_yield = dividend_yield
+
+    # Implementing calculate_return method
+    def calculate_return(self):
+        # Simple return calculation based on dividend yield
+        return self.value * self.dividend_yield
+
+    # Overriding asset_details method
+    def asset_details(self):
+        return f"Stock Name: {self.name}, Value: ${self.value}, Dividend Yield: {self.dividend_yield * 100}%"
+
+    # New method specific to Stock class
+    def stock_split(self, split_ratio):
+        self.value /= split_ratio
+        return f"The stock has split by {split_ratio}. New value: ${self.value}"
+
+# Child class RealEstate inheriting from Asset
+class RealEstate(Asset):
+    def __init__(self, name, value, rental_income):
+        super().__init__(name, value)
+        self.rental_income = rental_income
+
+    # Implementing calculate_return method
+    def calculate_return(self):
+        # Return calculation based on rental income
+        return self.rental_income * 12  # Annual rental income
+
+    # Overriding asset_details method
+    def asset_details(self):
+        return f"Property: {self.name}, Value: ${self.value}, Monthly Rental Income: ${self.rental_income}"
+
+    # New method specific to RealEstate class
+    def increase_rent(self, percentage):
+        self.rental_income *= (1 + percentage / 100)
+        return f"Rent increased by {percentage}%. New monthly rent: ${self.rental_income:.2f}"
+
+# Example usage
+# Create a stock asset
+stock = Stock("AAPL", 15000, 0.02)
+print(stock.asset_details())
+print(f"Annual return from dividends: ${stock.calculate_return():.2f}")
+print(stock.stock_split(2))  # Stock split 2-for-1
+print(stock.asset_details())
+
+print("\n-------------------------\n")
+
+# Create a real estate asset
+real_estate = RealEstate("Downtown Apartment", 500000, 2000)
+print(real_estate.asset_details())
+print(f"Annual return from rent: ${real_estate.calculate_return():.2f}")
+print(real_estate.increase_rent(5))  # Increase rent by 5%
+print(real_estate.asset_details()) 
+
+#Insert isInstance() examples during lesson

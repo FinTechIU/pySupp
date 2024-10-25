@@ -1,0 +1,54 @@
+import random
+from time import perf_counter
+
+"""
+Linear Search
+Goes from index 0 to arr[-1] until it finds the element
+O(n)
+"""
+def linear_search(arr, target):
+    for i in range(len(arr)):
+        if arr[i] == target:
+            return True
+    return False
+
+
+"""
+Binary Search
+Checks at the midpoint each time, splitting the list size by 2
+O(logn)
+"""
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return True
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return False
+
+# Function to calculate time for both search algorithms
+def compare_search_times(arr, target):
+    # Timing linear search
+    start_time = perf_counter()
+    linear_search_result = linear_search(arr, target)
+    linear_search_time = perf_counter() - start_time
+
+    # Timing binary search
+    start_time = perf_counter()
+    binary_search_result = binary_search(arr, target)
+    binary_search_time = perf_counter() - start_time
+
+    return linear_search_time, binary_search_time
+
+# Example array and target
+arr = list(range(1, 1_000_000))  # Large sorted array
+target = random.randrange(0, 1_000_000)  # Random Target
+
+# Get results and timing
+linear_search_time, binary_search_time = compare_search_times(arr, target)
+print(f"Search Target: {target}\nLinear Search Time (seconds): {linear_search_time}\nBinary Search Time (seconds): {binary_search_time}\nRatio of Binary to Linear Time {linear_search_time / binary_search_time}")
+
