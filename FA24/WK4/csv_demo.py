@@ -32,6 +32,7 @@ def print_banks_ascending_date():
 # try removing the encoding= argument and show what happens
 with open('banklist.csv', newline='', encoding='ISO-8859-1') as csvfile:
 	global reader
+	# can read a file with a non-comma delimiter with csv.reader(delimiter='|')
 	reader = csv.DictReader(csvfile)
 	#basic_reader()
 	#print_banks_from_state()
