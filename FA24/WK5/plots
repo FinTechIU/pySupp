@@ -1,0 +1,48 @@
+import matplotlib.pyplot as plt
+
+# Sample data
+months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+sales_growth = [12000, 15000, 14000, 17000, 16000, 18000, 21000, 22000, 23000, 25000, 27000, 29000]
+profit = [2000, 3000, 2500, 4000, 3500, 4500, 5000, 5500, 6000, 6500, 7000, 7500]
+regions = ["North", "South", "East", "West"]
+customer_segments = [35, 25, 20, 20]  # Percentage of each segment
+
+# line plot
+plt.figure(figsize=(10, 5))
+plt.plot(months, sales_growth, marker='o', linestyle='-', color='blue', label='Sales Growth')
+plt.title("Monthly Sales Growth")
+plt.xlabel("Months")
+plt.ylabel("Sales ($)")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# bar graph
+plt.figure(figsize=(10, 5))
+plt.bar(months, profit, color='green')
+plt.title("Monthly Profit")
+plt.xlabel("Months")
+plt.ylabel("Profit ($)")
+plt.show()
+
+# pie graph
+plt.figure(figsize=(7, 7))
+plt.pie(customer_segments, labels=regions, autopct='%1.1f%%', startangle=140, colors=['gold', 'lightblue', 'lightgreen', 'pink'])
+plt.title("Customer Segmentation by Region")
+plt.show()
+
+# scatter
+plt.figure(figsize=(10, 5))
+plt.scatter(sales_growth, profit, color='purple')
+plt.title("Sales vs Profit")
+plt.xlabel("Sales ($)")
+plt.ylabel("Profit ($)")
+plt.show()
+
+# histogram
+plt.figure(figsize=(10, 5))
+plt.hist(sales_growth, bins=5, color='orange', edgecolor='black')
+plt.title("Distribution of Monthly Sales")
+plt.xlabel("Sales ($)")
+plt.ylabel("Frequency")
+plt.show()
