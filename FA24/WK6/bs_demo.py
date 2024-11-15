@@ -1,9 +1,10 @@
 from bs4 import BeautifulSoup
 import requests
 
-url = "https://pricing.grixisutils.site/?id=97210"
+id = 97210
+url = "https://pricing.grixisutils.site/"
 
-soup = BeautifulSoup(requests.get(url).text, 'lxml')
+soup = BeautifulSoup(requests.get(url, params={'id': id}).text, 'lxml')
 
 #print(soup.prettify())
 
@@ -18,3 +19,4 @@ for row in price_table.find_all('tr'):
     ents = row.find_all('td')
     print(ents[0].string, ents[1].string.split(chr(0xA0))[0])
 '''
+#'''
