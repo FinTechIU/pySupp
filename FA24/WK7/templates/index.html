@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+	<div>
+    <h1>Checkers!</h1>
+    <p>
+        Checkers, also known as Draughts, is a group of strategy board games for
+        two players which involve diagonal moves of uniform game pieces and
+        mandatory captures by jumping over opponent pieces.
+    </p>
+    </div>
+	<div>
+        <p>
+        {% for i in range(copies) %}
+		<div>{{ copy_text }}</div>
+		{% endfor %}
+        </p>
+    </div>
+    <div>
+		<div>
+			<h2>How to Play</h2>
+			<p>
+			Click on the unit you want to move and then the space you want to move
+			it to. You will only be allowed to select two spots. If the move is
+			invalid nothing will happen and you will have to reselect.
+			</p>
+		</div>
+    </div>
+</div>
+{% endblock %}
